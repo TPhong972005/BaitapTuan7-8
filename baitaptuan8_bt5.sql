@@ -1,4 +1,8 @@
-﻿---- Câu 1
+﻿USE QLBH15
+GO
+---- Câu 1
+ALTER TABLE Customer ADD Phone INT
+
 SELECT CAST(CustomerID AS NVARCHAR) AS CodeID, 
     CompanyName AS Name, Address, Phone AS HomePhone
 FROM Customers
@@ -13,7 +17,7 @@ SELECT c.CustomerID, c.CompanyName, c.Address,
 INTO HDKH_9196
 FROM Customers c
 JOIN Orders o ON c.CustomerID = o.CustomerID
-JOIN Order_Details od ON o.OrderID = od.OrderID
+JOIN OrderDetails od ON o.OrderID = od.OrderID
 WHERE o.OrderDate >= '1996-09-01' AND o.OrderDate < '1996-10-01'
 GROUP BY c.CustomerID, c.CompanyName, c.Address;
 
@@ -37,7 +41,7 @@ FROM
 JOIN 
     Orders o ON c.CustomerID = o.CustomerID
 JOIN 
-    Order_Details od ON o.OrderID = od.OrderID
+    OrderDetails od ON o.OrderID = od.OrderID
 WHERE 
     o.ShipCountry IN ('Germany', 'USA') 
     AND o.OrderDate >= '1996-07-01' 
